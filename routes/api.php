@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use LaravelJsonApi\Laravel\Facades\JsonApiRoute;
+use LaravelJsonApi\Laravel\Http\Controllers\JsonApiController;
+use LaravelJsonApi\Laravel\Routing\ResourceRegistrar;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +21,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('v1')->group(function () {
-    foreach (glob(__DIR__.'/api/v1/*.php') as $filename) {
-        include $filename;
-    }
-});
+JsonApiRoute::server('v1')
+    ->prefix('v1')
+    ->resources(function (ResourceRegistrar $server) {
+        $server
+            ->resource('products', JsonApiController::class)
+            ->readOnly();
+    });
