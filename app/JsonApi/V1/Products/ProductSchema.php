@@ -9,10 +9,10 @@ use LaravelJsonApi\Eloquent\Fields\ID;
 use LaravelJsonApi\Eloquent\Fields\Relations\BelongsTo;
 use LaravelJsonApi\Eloquent\Fields\Relations\HasManyThrough;
 use LaravelJsonApi\Eloquent\Fields\SoftDelete;
+use LaravelJsonApi\Eloquent\Fields\Str;
 use LaravelJsonApi\Eloquent\Filters\WhereIdIn;
 use LaravelJsonApi\Eloquent\Pagination\PagePagination;
 use LaravelJsonApi\Eloquent\Schema;
-use LaravelJsonApi\Eloquent\Fields\Str;
 use Lunar\Models\Product;
 
 class ProductSchema extends Schema
@@ -70,5 +70,4 @@ class ProductSchema extends Schema
     {
         return PagePagination::make();
     }
-
 }

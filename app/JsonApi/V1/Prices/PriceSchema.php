@@ -62,5 +62,4 @@ class PriceSchema extends Schema
     {
         return PagePagination::make();
     }
-
 }

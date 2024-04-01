@@ -32,10 +32,8 @@ class Handler extends ExceptionHandler
             //
         });
 
-
         $this->renderable(
             \LaravelJsonApi\Exceptions\ExceptionParser::make()->renderable()
         );
-
     }
 }

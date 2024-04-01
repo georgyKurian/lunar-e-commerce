@@ -5,12 +5,11 @@ namespace App\JsonApi\V1\ProductTypes;
 use LaravelJsonApi\Eloquent\Contracts\Paginator;
 use LaravelJsonApi\Eloquent\Fields\DateTime;
 use LaravelJsonApi\Eloquent\Fields\ID;
+use LaravelJsonApi\Eloquent\Fields\Str;
 use LaravelJsonApi\Eloquent\Filters\WhereIdIn;
 use LaravelJsonApi\Eloquent\Pagination\PagePagination;
 use LaravelJsonApi\Eloquent\Schema;
 use Lunar\Models\ProductType;
-
-use LaravelJsonApi\Eloquent\Fields\Str;
 
 class ProductTypeSchema extends Schema
 {
@@ -57,5 +56,4 @@ class ProductTypeSchema extends Schema
     {
         return PagePagination::make();
     }
-
 }

@@ -61,5 +61,4 @@ class BrandSchema extends Schema
     {
         return PagePagination::make();
     }
-
 }

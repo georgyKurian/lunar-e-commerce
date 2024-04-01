@@ -29,6 +29,6 @@ return [
     'servers' => [
         // 'storefront' => \Lunar\Api\Storefront\Server::class,
         // 'checkout' => \Lunar\Api\Checkout\Server::class,
-        'v1' => \App\JsonApi\V1\Server::class,
+        'v1' => App\JsonApi\V1\Server::class,
     ],
 ];
