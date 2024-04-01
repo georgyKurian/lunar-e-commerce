@@ -13,9 +13,7 @@
     "blank_line_after_namespace": true,
     "blank_line_after_opening_tag": true,
     "blank_line_before_statement": {
-      "statements": [
-        "return"
-      ]
+      "statements": ["return"]
     },
     "braces": true,
     "cast_spaces": true,
@@ -53,12 +51,7 @@
     "native_function_casing": true,
     "no_alias_functions": true,
     "no_extra_blank_lines": {
-      "tokens": [
-        "extra",
-        "throw",
-        "use",
-        "use_trait"
-      ]
+      "tokens": ["extra", "throw", "use", "use_trait"]
     },
     "no_blank_lines_after_class_opening": true,
     "no_blank_lines_after_phpdoc": true,
@@ -115,9 +108,7 @@
     "single_import_per_statement": true,
     "single_line_after_imports": true,
     "single_line_comment_style": {
-      "comment_types": [
-        "hash"
-      ]
+      "comment_types": ["hash"]
     },
     "single_quote": true,
     "space_after_semicolon": true,
@@ -127,22 +118,14 @@
     "ternary_operator_spaces": true,
     "trailing_comma_in_multiline": {
       "after_heredoc": true,
-      "elements": [
-        "arrays"
-      ]
+      "elements": ["arrays"]
     },
     "trim_array_spaces": true,
     "unary_operator_spaces": true,
     "visibility_required": {
-      "elements": [
-        "method",
-        "property"
-      ]
+      "elements": ["method", "property"]
     },
     "whitespace_after_comma_in_array": true
   },
-  "notPath": [
-    "server.php",
-    "tinker.config.php"
-  ]
+  "notPath": ["server.php", "tinker.config.php"]
 }
