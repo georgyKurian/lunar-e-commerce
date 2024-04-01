@@ -1,0 +1,23 @@
+name: Run Tests
+
+on:
+  push:
+
+jobs:
+  pint:
+    runs-on: ubuntu-latest
+    name: Runs Laravel Pint to Check Styles
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, pdo_pgsql, bcmath, soap, intl, gd, exif, iconv, imagick, redis
+          coverage: none
+      - name: Install Dependencies
+        run: composer install --prefer-dist --no-interaction --no-suggest
+      - name: Check for Styles
+        run: ./vendor/bin/pint --test
