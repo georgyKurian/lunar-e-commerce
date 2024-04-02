@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Store\ProductEnrolmentSetting;
+use App\Models\Store\ProductVariant;
 use Illuminate\Support\Facades\DB;
 use Lunar\FieldTypes\ListField;
 use Lunar\FieldTypes\Text;
@@ -17,7 +19,6 @@ use Lunar\Models\Product;
 use Lunar\Models\ProductOption;
 use Lunar\Models\ProductOptionValue;
 use Lunar\Models\ProductType;
-use Lunar\Models\ProductVariant;
 use Lunar\Models\TaxClass;
 
 class ProductSeeder extends AbstractSeeder
@@ -83,6 +84,12 @@ class ProductSeeder extends AbstractSeeder
                     'tax_class_id' => $taxClass->id,
                     'stock' => 500,
                 ]);
+
+                if ($product->enrolment_setting) {
+                    ProductEnrolmentSetting::factory()
+                        ->recycle($variant)
+                        ->create((array) $product->enrolment_setting);
+                }
 
                 Price::create([
                     'customer_group_id' => null,
