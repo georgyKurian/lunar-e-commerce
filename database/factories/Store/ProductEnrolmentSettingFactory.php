@@ -1,11 +1,11 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Store;
 
 use App\Models\Store\ProductVariant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class EnrolmentSettingFactory extends Factory
+class ProductEnrolmentSettingFactory extends Factory
 {
     public function definition(): array
     {

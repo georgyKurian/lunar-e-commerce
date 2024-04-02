@@ -2,7 +2,6 @@
 
 namespace App\Models\Store;
 
-use App\Models\EnrolmentSetting;
 use Database\Factories\Store\ProductVariantFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Lunar\Database\Factories\ProductVariantFactory as FactoriesProductVariantFactory;
@@ -17,6 +16,6 @@ class ProductVariant extends ModelsProductVariant
 
     public function enrolmentSetting(): HasOne
     {
-        return $this->hasOne(EnrolmentSetting::class);
+        return $this->hasOne(ProductEnrolmentSetting::class);
     }
 }

@@ -10,7 +10,7 @@ return new class() extends Migration {
      */
     public function up(): void
     {
-        Schema::create('enrolment_settings', function (Blueprint $table) {
+        Schema::create('product_enrolment_settings', function (Blueprint $table) {
             $table->id();
             $table
                 ->foreignId('product_variant_id')

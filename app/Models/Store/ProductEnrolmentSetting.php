@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Store;
 
-use App\Models\Store\ProductVariant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class EnrolmentSetting extends Model
+class ProductEnrolmentSetting extends Model
 {
     use HasFactory;
 
