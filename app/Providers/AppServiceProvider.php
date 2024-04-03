@@ -53,6 +53,5 @@ class AppServiceProvider extends ServiceProvider
             'order_line' => \Lunar\Models\OrderLine::class,
             'order_address' => \Lunar\Models\OrderAddress::class,
         ]);
-        
     }
 }

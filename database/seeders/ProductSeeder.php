@@ -14,7 +14,6 @@ use Lunar\Models\Brand;
 use Lunar\Models\Collection;
 use Lunar\Models\Currency;
 use Lunar\Models\Language;
-use Lunar\Models\Price;
 use Lunar\Models\Product;
 use Lunar\Models\ProductOption;
 use Lunar\Models\ProductOptionValue;
