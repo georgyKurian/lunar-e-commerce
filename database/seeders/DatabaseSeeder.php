@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(CollectionSeeder::class);
-        $this->call(AttributeSeeder::class);
-        $this->call(TaxSeeder::class);
-        $this->call(ProductSeeder::class);
-        $this->call(CustomerSeeder::class);
-        $this->call(OrderSeeder::class);
+        DB::transaction(function () {
+            $this->call(CollectionSeeder::class);
+            $this->call(AttributeSeeder::class);
+            $this->call(TaxSeeder::class);
+            $this->call(ProductSeeder::class);
+            $this->call(CustomerSeeder::class);
+            $this->call(OrderSeeder::class); 
+        });
     }
 }

@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Store\ProductVariant as StoreProductVariant;
 use App\Models\User;
 use Faker\Factory;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Lunar\Base\OrderReferenceGenerator;
@@ -15,6 +17,7 @@ use Lunar\Models\Channel;
 use Lunar\Models\Currency;
 use Lunar\Models\Order;
 use Lunar\Models\OrderAddress;
+use Lunar\Models\Product;
 use Lunar\Models\ProductVariant;
 
 class OrderSeeder extends Seeder
@@ -27,8 +30,17 @@ class OrderSeeder extends Seeder
     public function run()
     {
         DB::transaction(function () {
-            $variants = ProductVariant::get();
-            $users = User::get();
+            $variants = ProductVariant::query()
+                ->with([
+                    'prices' =>[
+                        "currency",
+                        'priceable',
+                    ],
+                    'values',
+                    'product',
+                ])
+                ->get();
+            $users = User::get()->load(['customers']);
             $faker = Factory::create();
             $channel = Channel::getDefault();
             $currency = Currency::getDefault();
@@ -53,7 +65,7 @@ class OrderSeeder extends Seeder
 
                     $lines->push([
                         'quantity' => $quantity,
-                        'purchasable_type' => ProductVariant::class,
+                        'purchasable_type' => $variant->getMorphClass(),
                         'purchasable_id' => $variant->id,
                         'type' => 'physical',
                         'description' => $variant->product->translateAttribute('name'),
