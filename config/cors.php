@@ -1,5 +1,7 @@
 <?php
 
+$allowedOriginPattern = env('SESSION_DOMAIN') ? '/^https?:\/\/(.*\.)?'.preg_quote(env('SESSION_DOMAIN')).'(:\d+)?$/' : null;
+
 return [
 
     /*
@@ -15,13 +17,13 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie', '/*'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => [],
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => [env('SESSION_DOMAIN') ? '/^https?:\/\/(.*\.)?'.preg_quote(env('SESSION_DOMAIN')).'(:\d+)?$/' : null],
 
     'allowed_headers' => ['*'],
 
@@ -29,6 +31,6 @@ return [
 
     'max_age' => 0,
 
-    'supports_credentials' => false,
+    'supports_credentials' => true,
 
 ];

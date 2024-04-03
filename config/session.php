@@ -155,7 +155,7 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN'),
+    'domain' =>  get_domain(env('APP_URL')) ? '.'.get_domain(env('APP_URL')) : null,
 
     /*
     |--------------------------------------------------------------------------
