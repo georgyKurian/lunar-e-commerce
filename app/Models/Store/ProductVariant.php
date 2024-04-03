@@ -4,12 +4,12 @@ namespace App\Models\Store;
 
 use Database\Factories\Store\ProductVariantFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Lunar\Database\Factories\ProductVariantFactory as FactoriesProductVariantFactory;
+use Lunar\Database\Factories\ProductVariantFactory as LunarProductVariantFactory;
 use Lunar\Models\ProductVariant as ModelsProductVariant;
 
 class ProductVariant extends ModelsProductVariant
 {
-    protected static function newFactory(): FactoriesProductVariantFactory
+    protected static function newFactory(): LunarProductVariantFactory
     {
         return ProductVariantFactory::new();
     }
@@ -17,5 +17,10 @@ class ProductVariant extends ModelsProductVariant
     public function enrolmentSetting(): HasOne
     {
         return $this->hasOne(ProductEnrolmentSetting::class);
+    }
+
+    public function getMorphClass(): string
+    {
+        return 'product_variant';
     }
 }

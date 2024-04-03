@@ -14,7 +14,6 @@ use Lunar\Models\Brand;
 use Lunar\Models\Collection;
 use Lunar\Models\Currency;
 use Lunar\Models\Language;
-use Lunar\Models\Price;
 use Lunar\Models\Product;
 use Lunar\Models\ProductOption;
 use Lunar\Models\ProductOptionValue;
@@ -85,20 +84,23 @@ class ProductSeeder extends AbstractSeeder
                     'stock' => 500,
                 ]);
 
-                if ($product->enrolment_setting) {
+                if (
+                    isset($product->enrolment_setting)
+                    && $product->enrolment_setting
+                ) {
                     ProductEnrolmentSetting::factory()
                         ->recycle($variant)
                         ->create((array) $product->enrolment_setting);
                 }
 
-                Price::create([
-                    'customer_group_id' => null,
-                    'currency_id' => $currency->id,
-                    'priceable_type' => ProductVariant::class,
-                    'priceable_id' => $variant->id,
-                    'price' => $product->price,
-                    'tier' => 1,
-                ]);
+                $variant
+                    ->prices()
+                    ->create([
+                        'customer_group_id' => null,
+                        'currency_id' => $currency->id,
+                        'price' => $product->price,
+                        'tier' => 1,
+                    ]);
 
                 $media = $productModel->addMedia(
                     base_path("database/seeders/data/images/{$product->image}")
