@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Http\Controllers\Api\V1;
+
+use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductResource;
+use Lunar\Models\Product;
+
+class ProductController extends Controller
+{
+    public function index()
+    {
+        $products = Product::query()
+            ->where('status', 'published')
+            ->whereHas('variants')
+            ->with(['variants' => function ($query) {
+                // get price of the variants
+
+                $query
+                    ->select([
+                        'id',
+                        'product_id',
+                        'sku',
+                        'stock',
+                        'shippable',
+                        'backorder',
+                        'purchasable',
+                        'attribute_data',
+                        'created_at',
+                        'updated_at',
+                    ])
+                    ->with(['prices' => function ($query) {
+                        $query->with(['currency', 'priceable']);
+                    }]);
+            }])
+            ->limit(10)
+            ->get();
+
+        return ProductResource::collection($products);
+    }
+
+    public function show(Product $product)
+    {
+        return new ProductResource($product);
+    }
+}
