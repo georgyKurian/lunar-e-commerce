@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\DB;
 use Lunar\FieldTypes\ListField;
 use Lunar\FieldTypes\Text;
 use Lunar\FieldTypes\TranslatedText;
-use Lunar\Hub\Jobs\Products\GenerateVariants;
 use Lunar\Models\Attribute;
 use Lunar\Models\Brand;
 use Lunar\Models\Collection;
@@ -99,7 +98,7 @@ class ProductSeeder extends AbstractSeeder
                         'customer_group_id' => null,
                         'currency_id' => $currency->id,
                         'price' => $product->price,
-                        'tier' => 1,
+                        'min_quantity' => 1,
                     ]);
 
                 $media = $productModel->addMedia(
@@ -151,7 +150,6 @@ class ProductSeeder extends AbstractSeeder
                         $optionValueIds[] = $valueModel->id;
                     }
                 }
-                GenerateVariants::dispatch($productModel, $optionValueIds);
             });
         });
     }

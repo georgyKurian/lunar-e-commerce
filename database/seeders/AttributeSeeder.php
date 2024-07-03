@@ -36,6 +36,7 @@ class AttributeSeeder extends AbstractSeeder
                         'en' => $attribute->name,
                     ],
                     'configuration' => (array) $attribute->configuration,
+                    'description' => '',
                 ]);
             }
         });
