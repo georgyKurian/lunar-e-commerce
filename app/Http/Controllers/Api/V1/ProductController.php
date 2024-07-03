@@ -29,9 +29,9 @@ class ProductController extends Controller
                         'created_at',
                         'updated_at',
                     ])
-                    ->with(['prices' => function ($query) {
-                        $query->with(['currency', 'priceable']);
-                    }]);
+                    ->with([
+                        'prices' => fn ($query) => $query->with(['currency', 'priceable']),
+                    ]);
             }])
             ->limit(10)
             ->get();
@@ -41,6 +41,26 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
+        $product
+            ->load(['variants' => function ($query) {
+                $query
+                    ->select([
+                        'id',
+                        'product_id',
+                        'sku',
+                        'stock',
+                        'shippable',
+                        'backorder',
+                        'purchasable',
+                        'attribute_data',
+                        'created_at',
+                        'updated_at',
+                    ])
+                    ->with([
+                        'prices' => fn ($query) => $query->with(['currency', 'priceable']),
+                    ]);
+            }]);
+
         return new ProductResource($product);
     }
 }

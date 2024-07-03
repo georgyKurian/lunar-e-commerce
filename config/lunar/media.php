@@ -9,7 +9,7 @@ return [
     ],
 
     'fallback' => [
-        'url' => env('FALLBACK_IMAGE_URL', null),
+        'url' => env('FALLBACK_IMAGE_URL', '/images/fallback.png'),
         'path' => env('FALLBACK_IMAGE_PATH', null),
     ],
 

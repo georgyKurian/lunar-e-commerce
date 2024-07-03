@@ -22,6 +22,7 @@ class ProductResource extends JsonResource
             'brand' => BrandResource::collection($this->whenLoaded('brand')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'image' => $this->getMedia('images'),
             'variants' => VariantResource::collection($this->whenLoaded('variants')),
         ];
     }
