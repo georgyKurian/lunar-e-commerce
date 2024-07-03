@@ -1,6 +1,7 @@
 <?php
 
-$allowedOriginPattern = env('SESSION_DOMAIN') ? '/^https?:\/\/(.*\.)?'.preg_quote(env('SESSION_DOMAIN')).'(:\d+)?$/' : null;
+$sessionDomainUrlPattern = env('SESSION_DOMAIN') ? '/^https?:\/\/(.*\.)?'.preg_quote(env('SESSION_DOMAIN')).'(:\d+)?$/' : null;
+$frontendDomainUrlPattern = env('FRONT_END_DOMAIN') ? '/^https?:\/\/(.*\.)?'.preg_quote(env('FRONT_END_DOMAIN')).'(:\d+)?$/' : null;
 
 return [
 
@@ -23,7 +24,7 @@ return [
 
     'allowed_origins' => [],
 
-    'allowed_origins_patterns' => [env('SESSION_DOMAIN') ? '/^https?:\/\/(.*\.)?'.preg_quote(env('SESSION_DOMAIN')).'(:\d+)?$/' : null],
+    'allowed_origins_patterns' => [$sessionDomainUrlPattern, $frontendDomainUrlPattern],
 
     'allowed_headers' => ['*'],
 
