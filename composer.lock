@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e14d7b514e71d5f56ee9c3c77f00bed4",
+    "content-hash": "edb887f3918bf775dc53b19455c5d3ec",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -3576,16 +3576,16 @@
         },
         {
             "name": "lunarphp/core",
-            "version": "0.7.6",
+            "version": "0.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lunarphp/core.git",
-                "reference": "3645042321bbab7fdddbd1d2574b594a96245e5b"
+                "reference": "d706afade9c4be6e2410c65cbe7ba156b4566289"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lunarphp/core/zipball/3645042321bbab7fdddbd1d2574b594a96245e5b",
-                "reference": "3645042321bbab7fdddbd1d2574b594a96245e5b",
+                "url": "https://api.github.com/repos/lunarphp/core/zipball/d706afade9c4be6e2410c65cbe7ba156b4566289",
+                "reference": "d706afade9c4be6e2410c65cbe7ba156b4566289",
                 "shasum": ""
             },
             "require": {
@@ -3649,7 +3649,7 @@
                 "store"
             ],
             "support": {
-                "source": "https://github.com/lunarphp/core/tree/0.7.6"
+                "source": "https://github.com/lunarphp/core/tree/0.8.1"
             },
             "funding": [
                 {
@@ -3657,20 +3657,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-01-31T16:15:20+00:00"
+            "time": "2024-05-06T20:18:17+00:00"
         },
         {
             "name": "lunarphp/livewire-tables",
-            "version": "0.7.6",
+            "version": "0.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lunarphp/livewire-tables.git",
-                "reference": "5bcb0cecbd93a684c3943bbd84a6f1b180fd0368"
+                "reference": "0cf97514cc20bd6dedb54a03b428c9381da9b75d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lunarphp/livewire-tables/zipball/5bcb0cecbd93a684c3943bbd84a6f1b180fd0368",
-                "reference": "5bcb0cecbd93a684c3943bbd84a6f1b180fd0368",
+                "url": "https://api.github.com/repos/lunarphp/livewire-tables/zipball/0cf97514cc20bd6dedb54a03b428c9381da9b75d",
+                "reference": "0cf97514cc20bd6dedb54a03b428c9381da9b75d",
                 "shasum": ""
             },
             "require": {
@@ -3714,22 +3714,22 @@
                 "tables"
             ],
             "support": {
-                "source": "https://github.com/lunarphp/livewire-tables/tree/0.7.6"
+                "source": "https://github.com/lunarphp/livewire-tables/tree/0.8.1"
             },
-            "time": "2023-09-18T07:29:10+00:00"
+            "time": "2024-01-15T09:01:39+00:00"
         },
         {
             "name": "lunarphp/lunar",
-            "version": "0.7.6",
+            "version": "0.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lunarphp/admin.git",
-                "reference": "0cc7d4987f9d619d6e8e3bee531b5928e8895778"
+                "reference": "466c7c4b03d1c0041c181c4e74e652bdb2f6208d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lunarphp/admin/zipball/0cc7d4987f9d619d6e8e3bee531b5928e8895778",
-                "reference": "0cc7d4987f9d619d6e8e3bee531b5928e8895778",
+                "url": "https://api.github.com/repos/lunarphp/admin/zipball/466c7c4b03d1c0041c181c4e74e652bdb2f6208d",
+                "reference": "466c7c4b03d1c0041c181c4e74e652bdb2f6208d",
                 "shasum": ""
             },
             "require": {
@@ -3784,7 +3784,7 @@
                 "store"
             ],
             "support": {
-                "source": "https://github.com/lunarphp/admin/tree/0.7.6"
+                "source": "https://github.com/lunarphp/admin/tree/0.8.1"
             },
             "funding": [
                 {
@@ -3792,20 +3792,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-01-31T16:05:49+00:00"
+            "time": "2024-05-06T20:55:04+00:00"
         },
         {
             "name": "lunarphp/scout-database-engine",
-            "version": "0.7.6",
+            "version": "0.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lunarphp/scout-database-engine.git",
-                "reference": "1f672d060930226ad5c7ca49671accf8befdbc7a"
+                "reference": "4056726fc326a959b9d368fa41c7d1806073fd5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lunarphp/scout-database-engine/zipball/1f672d060930226ad5c7ca49671accf8befdbc7a",
-                "reference": "1f672d060930226ad5c7ca49671accf8befdbc7a",
+                "url": "https://api.github.com/repos/lunarphp/scout-database-engine/zipball/4056726fc326a959b9d368fa41c7d1806073fd5a",
+                "reference": "4056726fc326a959b9d368fa41c7d1806073fd5a",
                 "shasum": ""
             },
             "require": {
@@ -3848,9 +3848,9 @@
                 "search"
             ],
             "support": {
-                "source": "https://github.com/lunarphp/scout-database-engine/tree/0.7.6"
+                "source": "https://github.com/lunarphp/scout-database-engine/tree/0.8.1"
             },
-            "time": "2024-01-11T09:46:13+00:00"
+            "time": "2024-01-31T15:34:22+00:00"
         },
         {
             "name": "maennchen/zipstream-php",

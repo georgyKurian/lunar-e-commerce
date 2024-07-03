@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Model::shouldBeStrict(! app()->isProduction());
+        //Model::shouldBeStrict(! app()->isProduction());
         $this->bootLunar();
         $this->bootMorphMaps();
     }
@@ -47,7 +47,9 @@ class AppServiceProvider extends ServiceProvider
             'customer' => \Lunar\Models\Customer::class,
             'product_variant' => StoreProductVariant::class,
             'product' => Product::class,
+            'product_type' => \Lunar\Models\ProductType::class,
             'lunar_collection' => \Lunar\Models\Collection::class,
+            'staff' => \Lunar\Hub\Models\Staff::class,
             'brand' => \Lunar\Models\Brand::class,
             'order' => \Lunar\Models\Order::class,
             'order_line' => \Lunar\Models\OrderLine::class,
