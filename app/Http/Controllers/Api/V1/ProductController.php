@@ -13,26 +13,27 @@ class ProductController extends Controller
         $products = Product::query()
             ->where('status', 'published')
             ->whereHas('variants')
-            ->with(['variants' => function ($query) {
-                // get price of the variants
-
-                $query
-                    ->select([
-                        'id',
-                        'product_id',
-                        'sku',
-                        'stock',
-                        'shippable',
-                        'backorder',
-                        'purchasable',
-                        'attribute_data',
-                        'created_at',
-                        'updated_at',
-                    ])
-                    ->with([
-                        'prices' => fn ($query) => $query->with(['currency', 'priceable']),
-                    ]);
-            }])
+            ->with([
+                'variants' => function ($query) {
+                    $query
+                        ->select([
+                            'id',
+                            'product_id',
+                            'sku',
+                            'stock',
+                            'shippable',
+                            'backorder',
+                            'purchasable',
+                            'attribute_data',
+                            'created_at',
+                            'updated_at',
+                        ])
+                        ->with([
+                            'prices' => fn ($query) => $query->with(['currency', 'priceable']),
+                        ]);
+                },
+            ])
+            ->oldest()
             ->limit(10)
             ->get();
 
@@ -59,7 +60,9 @@ class ProductController extends Controller
                     ->with([
                         'prices' => fn ($query) => $query->with(['currency', 'priceable']),
                     ]);
-            }]);
+            },
+            ])
+            ->loadMedia('products');
 
         return new ProductResource($product);
     }
