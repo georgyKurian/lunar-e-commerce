@@ -68,7 +68,7 @@ class ProductSeeder extends AbstractSeeder
 
                 $productModel = Product::create([
                     'attribute_data' => $attributeData,
-                    'product_type_id' => $productType->id,
+                    'product_type_id' => $product->type_id ?? $productType->id,
                     'status' => 'published',
                     'brand_id' => $brand->id,
                 ]);

@@ -14,6 +14,7 @@ class ProductController extends Controller
             ->where('status', 'published')
             ->whereHas('variants')
             ->with([
+                'thumbnail',
                 'variants' => function ($query) {
                     $query
                         ->select([
@@ -43,24 +44,26 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $product
-            ->load(['variants' => function ($query) {
-                $query
-                    ->select([
-                        'id',
-                        'product_id',
-                        'sku',
-                        'stock',
-                        'shippable',
-                        'backorder',
-                        'purchasable',
-                        'attribute_data',
-                        'created_at',
-                        'updated_at',
-                    ])
-                    ->with([
-                        'prices' => fn ($query) => $query->with(['currency', 'priceable']),
-                    ]);
-            },
+            ->load([
+                'variants' => function ($query) {
+                    $query
+                        ->select([
+                            'id',
+                            'product_id',
+                            'sku',
+                            'stock',
+                            'shippable',
+                            'backorder',
+                            'purchasable',
+                            'attribute_data',
+                            'created_at',
+                            'updated_at',
+                        ])
+                        ->with([
+                            'prices' => fn ($query) => $query->with(['currency', 'priceable']),
+                        ]);
+                },
+                'thumbnail',
             ])
             ->loadMedia('products');
 
