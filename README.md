@@ -64,3 +64,15 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Setup
+1. Set valet to lunar.test for the Lunar website or server using
+```
+valet link lunar --secure
+```
+2. Set NuxtJs front end domain to api.lunar.test to make both apps on same domain for cookies/session to work.
+```
+valet link api.lunar
+valet proxy --secure api.lunar http://localhost:3000
+```
