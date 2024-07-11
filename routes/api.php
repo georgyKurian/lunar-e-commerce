@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Resources\UserResource;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,11 +20,4 @@ Route::prefix('v1')
         foreach (glob(__DIR__.'/api/*/*.php') as $filename) {
             include $filename;
         }
-
-        Route::middleware('auth:sanctum')
-            ->group(function () {
-                Route::get('v1/user', function (Request $request) {
-                    return new UserResource($request->user());
-                });
-            });
     });
