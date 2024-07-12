@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Api\v1\AuthenticateController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('user', AuthenticateController::class)->middleware('auth:sanctum');
+Route::get('user', App\Http\Controllers\Api\V1\AuthenticateController::class)->middleware('auth:sanctum');
