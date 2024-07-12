@@ -10,16 +10,13 @@ return new class() extends Migration {
      */
     public function up(): void
     {
-        Schema::create('product_enrolment_settings', function (Blueprint $table) {
+        Schema::create('enrolment_settings', function (Blueprint $table) {
             $table->id();
             $table
                 ->foreignId('product_variant_id')
                 ->constrained(table:$this->prefix.'product_variants')
                 ->onDelete('cascade');
-            $table->boolean('course_id');
-            $table->boolean('location_1_id');
-            $table->boolean('location_2_id')->nullable();
-            $table->boolean('location_3_id')->nullable();
+            $table->unsignedInteger('course_id');
             $table->text('selection_type')->default('calendar');
             $table->boolean('is_time_selection_enabled')->default(false);
             $table->timestamps();
