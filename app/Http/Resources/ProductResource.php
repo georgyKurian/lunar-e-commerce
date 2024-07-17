@@ -23,7 +23,7 @@ class ProductResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'thumbnail' => new MediaResource($this->thumbnail),
-            'variants' => VariantResource::collection($this->whenLoaded('variants')),
+            'variants' => ProductVariantResource::collection($this->whenLoaded('variants')),
             'images' => MediaResource::collection($this->whenLoaded('media')),
         ];
     }

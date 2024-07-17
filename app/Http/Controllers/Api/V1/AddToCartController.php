@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CartResource;
 use App\Models\Store\ProductVariant;
 use Domain\Cart\Actions\AddToCartAction;
 use Domain\Cart\Actions\CreateCartAction;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Lunar\Base\CartSessionInterface;
@@ -31,7 +33,19 @@ class AddToCartController extends Controller
 
         $updatedCart = $addToCartAction->execute($cart, $product, $validated['quantity']);
 
-        return $updatedCart;
+        $updatedCart->load(['lines.purchasable' => function (MorphTo $morphTo) {
+            $morphTo
+                ->constrain([
+                    ProductVariant::class => function ($query) {
+                        $query->onlyBasicData();
+                    },
+                ])
+                ->morphWith([
+                    ProductVariant::class => ['product'],
+                ]);
+        }]);
+
+        return new CartResource($updatedCart);
     }
 
     /**

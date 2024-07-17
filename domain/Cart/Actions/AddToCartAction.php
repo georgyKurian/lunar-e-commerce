@@ -22,7 +22,7 @@ class AddToCartAction
         return $cart;
     }
 
-    private function getCartLine(Cart $cart, Purchasable $purchasable): CartLine
+    private function getCartLine(Cart $cart, Purchasable $purchasable): ?CartLine
     {
         return $cart->lines->first(fn (CartLine $cartLine) => $cartLine->purchasable_id === $purchasable->id);
     }
