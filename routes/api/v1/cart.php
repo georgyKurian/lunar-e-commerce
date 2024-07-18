@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\V1\AddToCartController;
 use App\Http\Controllers\Api\V1\CartController;
+use App\Http\Controllers\Api\V1\RemoveFromCartController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(CartController::class)
@@ -10,5 +11,7 @@ Route::controller(CartController::class)
         Route::delete('/cart', 'destroy');
     });
 
-Route::post('/cart/add', [AddToCartController::class, 'store'])
+Route::post('/cart/add', AddToCartController::class)
     ->name('cart.add');
+Route::post('/cart/remove', RemoveFromCartController::class)
+    ->name('cart.remove');

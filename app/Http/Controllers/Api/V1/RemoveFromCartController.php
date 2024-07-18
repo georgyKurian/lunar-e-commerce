@@ -5,35 +5,29 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CartResource;
 use App\Models\Store\ProductVariant;
-use Domain\Cart\Actions\AddToCartAction;
 use Domain\Cart\Actions\CreateCartAction;
+use Domain\Cart\Actions\RemoveFromCartAction;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Lunar\Base\CartSessionInterface;
-use Lunar\Models\Product;
+use Lunar\Models\CartLine;
 
-class AddToCartController extends Controller
+class RemoveFromCartController extends Controller
 {
-    public function __invoke(Request $request, CartSessionInterface $cartSession, CreateCartAction $createCartAction, AddToCartAction $addToCartAction)
+    public function __invoke(Request $request, CartSessionInterface $cartSession, CreateCartAction $createCartAction, RemoveFromCartAction $removeFromCartAction)
     {
         $validated = $request->validate([
-           'product_variant' => ['required', 'array'],
-              'product_variant.id' => ['required', 'integer', Rule::exists((new Product())->getTable(), 'id')],
-           'quantity' => ['required', 'integer', 'min:1'],
+           'cart_line_id' => ['required', 'integer', Rule::exists((new CartLine())->getTable(), 'id')],
         ]);
 
-        $product = ProductVariant::findOrFail($validated['product_variant']['id']);
         $cart = $cartSession->current();
 
-        if (! $cart) {
-            $cart = $createCartAction->execute();
-            $cartSession->use($cart);
+        if ($cart) {
+            $cart = $removeFromCartAction->execute($cart, $validated['cart_line_id']);
         }
 
-        $updatedCart = $addToCartAction->execute($cart, $product, $validated['quantity']);
-
-        $updatedCart
+        $cart
             ->load(['lines.purchasable' => function (MorphTo $morphTo) {
                 $morphTo
                     ->constrain([
@@ -47,6 +41,6 @@ class AddToCartController extends Controller
             }])
             ->calculate();
 
-        return new CartResource($updatedCart);
+        return new CartResource($cart);
     }
 }
