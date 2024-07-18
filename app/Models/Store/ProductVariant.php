@@ -31,6 +31,8 @@ class ProductVariant extends ModelsProductVariant
             'id',
             'product_id',
             'sku',
+            'unit_quantity',
+            'tax_class_id',
             'stock',
             'backorder',
             'shippable',

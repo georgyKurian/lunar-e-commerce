@@ -33,17 +33,19 @@ class AddToCartController extends Controller
 
         $updatedCart = $addToCartAction->execute($cart, $product, $validated['quantity']);
 
-        $updatedCart->load(['lines.purchasable' => function (MorphTo $morphTo) {
-            $morphTo
-                ->constrain([
-                    ProductVariant::class => function ($query) {
-                        $query->onlyBasicData();
-                    },
-                ])
-                ->morphWith([
-                    ProductVariant::class => ['product'],
-                ]);
-        }]);
+        $updatedCart
+            ->load(['lines.purchasable' => function (MorphTo $morphTo) {
+                $morphTo
+                    ->constrain([
+                        ProductVariant::class => function ($query) {
+                            $query->onlyBasicData();
+                        },
+                    ])
+                    ->morphWith([
+                        ProductVariant::class => ['product'],
+                    ]);
+            }])
+            ->calculate();
 
         return new CartResource($updatedCart);
     }

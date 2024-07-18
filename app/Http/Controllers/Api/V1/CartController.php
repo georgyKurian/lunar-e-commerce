@@ -11,22 +11,26 @@ use Lunar\Base\CartSessionInterface;
 
 class CartController extends Controller
 {
-    public function index(Request $request, CartSessionInterface $cartSession)
+    public function index(CartSessionInterface $cartSession)
     {
         $cart = $cartSession->current();
-        $cart->load(['lines.purchasable' => function (MorphTo $morphTo) {
-            $morphTo
-                ->constrain([
-                    ProductVariant::class => function ($query) {
-                        $query->onlyBasicData();
-                    },
-                ])
-                ->morphWith([
-                    ProductVariant::class => ['product'],
-                ]);
-        }]);
 
-        return new CartResource($cart);
+        if ($cart) {
+            $cart->load(['lines.purchasable' => function (MorphTo $morphTo) {
+                $morphTo
+                    ->constrain([
+                        ProductVariant::class => function ($query) {
+                            $query->onlyBasicData();
+                        },
+                    ])
+                    ->morphWith([
+                        ProductVariant::class => ['product'],
+                    ]);
+            }])
+            ->calculate();
+        }
+
+        return $cart ? new CartResource($cart) : response()->json(['data' => null]);
     }
 
     public function destroy(Request $request, CartSessionInterface $cartSession)

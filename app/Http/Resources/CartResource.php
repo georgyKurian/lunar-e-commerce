@@ -25,6 +25,19 @@ class CartResource extends JsonResource
             'lines' => CartLineResource::collection($this->whenLoaded('lines')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'fingerprints' => $this->fingerprint(),
+            'calculated' => [
+                'subTotal' => $this->subTotal, // The cart sub total, excluding tax
+                'discountTotal' => $this->discountTotal, // The monetary value for the discount total.
+                'shippingSubTotal' => $this->shippingSubTotal, // The shipping total, excluding tax.
+                'taxTotal' => $this->taxTotal, // The monetary value for the amount of tax applied.
+                'total' => $this->total, // The total price value for the cart
+                // 'subTotalDiscounted' => $this->subTotalDiscounted, // The cart sub total, minus the discount amount.
+                // 'taxBreakdown' => $this->taxBreakdown, // This is a collection of all taxes applied across all lines.
+                // 'discountBreakdown' => $this->discountBreakdown, // This is a collection of how discounts were calculated
+                // 'shippingTotal' => $this->shippingTotal, // The shipping total including tax.
+                // 'shippingBreakdown' => $this->shippingBreakdown, // This is a collection of how shipping was calculated
+            ],
         ];
     }
 }

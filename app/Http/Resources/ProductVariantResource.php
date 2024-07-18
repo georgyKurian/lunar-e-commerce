@@ -19,13 +19,12 @@ class ProductVariantResource extends JsonResource
         return [
             'id' => $this->id,
             'product_id' => $this->product_id,
-            $this->mergeWhen($this->hasAttribute('tax_class_id'), [
-                'tax_class_id' => $this->tax_class_id,
+            $this->mergeWhen($this->hasAttribute('length_value'), [
                 // 'tax_ref' => $this->tax_ref,
                 // 'gtin' => $this->gtin,
                 // 'mpn' => $this->mpn,
                 // 'ean' => $this->ean,
-                // 'length_value' => $this->length_value,
+                'length_value' => $this->length_value,
                 // 'length_unit' => $this->length_unit,
                 // 'width_value' => $this->width_value,
                 // 'width_unit' => $this->width_unit,
