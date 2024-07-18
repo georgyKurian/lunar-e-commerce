@@ -12,8 +12,7 @@
     "type_id": 3,
     "enrolment_setting": {
       "course_id": 1,
-      "location_1_id": 1,
-      "location_2_id": 1
+      "locations": [1]
     }
   },
   {

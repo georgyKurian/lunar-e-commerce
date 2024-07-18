@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class VariantResource extends JsonResource
+class ProductVariantResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,13 +19,12 @@ class VariantResource extends JsonResource
         return [
             'id' => $this->id,
             'product_id' => $this->product_id,
-            $this->mergeWhen($this->hasAttribute('tax_class_id'), [
-                // 'tax_class_id' => $this->tax_class_id,
+            $this->mergeWhen($this->hasAttribute('length_value'), [
                 // 'tax_ref' => $this->tax_ref,
                 // 'gtin' => $this->gtin,
                 // 'mpn' => $this->mpn,
                 // 'ean' => $this->ean,
-                // 'length_value' => $this->length_value,
+                'length_value' => $this->length_value,
                 // 'length_unit' => $this->length_unit,
                 // 'width_value' => $this->width_value,
                 // 'width_unit' => $this->width_unit,
@@ -46,6 +45,7 @@ class VariantResource extends JsonResource
                 'base' => new PriceResource($pricing->base),
                 'matched' => new PriceResource($pricing->matched),
             ],
+            'product' => new ProductResource($this->whenLoaded('product')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Store\ProductEnrolmentSetting;
+use App\Models\Store\EnrolmentSetting;
 use App\Models\Store\ProductVariant;
 use Illuminate\Support\Facades\DB;
 use Lunar\FieldTypes\ListField;
@@ -87,9 +87,9 @@ class ProductSeeder extends AbstractSeeder
                     isset($product->enrolment_setting)
                     && $product->enrolment_setting
                 ) {
-                    ProductEnrolmentSetting::factory()
+                    EnrolmentSetting::factory()
                         ->recycle($variant)
-                        ->create((array) $product->enrolment_setting);
+                        ->create(\Illuminate\Support\Arr::only((array) $product->enrolment_setting, ['course_id']));
                 }
 
                 $variant
