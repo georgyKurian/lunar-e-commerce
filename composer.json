@@ -16,7 +16,8 @@
     "laravel/sanctum": "^4.0",
     "laravel/tinker": "^2.8",
     "league/flysystem-aws-s3-v3": "^3.0",
-    "lunarphp/lunar": "^1.0.0-alpha.28"
+    "lunarphp/lunar": "^1.0.0-alpha.28",
+    "lunarphp/stripe": "^1.0@alpha"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.9",

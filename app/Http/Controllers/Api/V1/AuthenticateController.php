@@ -14,6 +14,9 @@ class AuthenticateController extends Controller
         return [
             'id' => $user->id,
             'name' => $user->name,
+            'first_name' => $user->first_name,
+            'last_name' => $user->last_name,
+            'name' => $user->name,
             'email' => $user->email,
             'email_verified' => (bool) $user->email_verified_at,
             'updated_at' => $user->updated_at,
